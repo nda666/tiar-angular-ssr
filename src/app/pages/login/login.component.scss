@@ -1,0 +1,32 @@
+nz-header {
+    background: #f1f1f1;
+    padding: 0;
+}
+
+nz-content{
+    height: 100%;
+    background: #f1f1f1;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+
+    .login-container {
+        max-width: 300px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .login-form {
+        width: 100%;
+    }
+
+    .brand-container {
+        display: flex;
+        align-items: baseline;
+        img {
+            width: 50px;
+        }
+        h1 {
+            margin: 0;
+        }
+    }
+}

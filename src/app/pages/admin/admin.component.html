@@ -1,0 +1,56 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="256px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a routerLink="/">
+        <img src="assets/icon/location.svg" alt="logo">
+        <h1>JeClock Panel</h1>
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard">Dashbord</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/test">Test</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Workplace</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a>Basic Form</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+              <i class="trigger"
+                 nz-icon
+                 [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+              ></i>
+          </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div style="height: 100%; position: relative;">
+        <div [@routeAnimations]="prepareRoute(outlet)" style="height: 100%;">
+          <router-outlet #outlet="outlet"></router-outlet>
+        </div>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
