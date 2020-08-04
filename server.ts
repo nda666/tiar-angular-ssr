@@ -1,16 +1,31 @@
 import 'zone.js/dist/zone-node';
 
-import { ngExpressEngine } from '@nguniversal/express-engine';
-import * as express from 'express';
-import { join } from 'path';
+import {ngExpressEngine} from '@nguniversal/express-engine';
+import mongoose from 'mongoose';
+import bodyParser from "body-parser";
 
-import { AppServerModule } from './src/main.server';
-import { APP_BASE_HREF } from '@angular/common';
-import { existsSync } from 'fs';
+import * as express from 'express';
+import {join} from 'path';
+
+import {AppServerModule} from './src/main.server';
+import {APP_BASE_HREF} from '@angular/common';
+import {existsSync} from 'fs';
+
+
+import {UserRoute} from './routes/user-route';
+
+const userRoute: UserRoute = new UserRoute();
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
+
+
   const server = express();
+    
+
+
+  userRoute.userRoute(server);
+
   const distFolder = join(process.cwd(), 'dist/angular/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
@@ -31,7 +46,7 @@ export function app(): express.Express {
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
-    res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+    res.render(indexHtml, {req, providers: [{provide: APP_BASE_HREF, useValue: req.baseUrl}]});
   });
 
   return server;
@@ -43,6 +58,20 @@ function run(): void {
   // Start up the Node server
   const server = app();
   server.listen(port, () => {
+    mongoose.connect('mongodb://localhost:27017/tiar', {
+      useNewUrlParser: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true,
+    })
+      .then(() => console.log('MonggoDB connection successful'))
+      .catch((err) => console.error(err));
+
+    mongoose.connection.on('error', err => {
+      console.log(err);
+    });
+
+    server.use(bodyParser.json());
+    server.use(bodyParser.urlencoded({extended: true}));
     console.log(`Node Express server listening on http://localhost:${port}`);
   });
 }

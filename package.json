@@ -2,8 +2,6 @@
   "name": "tiar-angular-ssr",
   "version": "0.0.1",
   "scripts": {
-    "start:heroku":"node dist/server",
-    "postinstall":"npm run build:ssr",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -13,7 +11,9 @@
     "dev:ssr": "ng run angular:serve-ssr",
     "serve:ssr": "node dist/angular/server/main.js",
     "build:ssr": "ng build --prod && ng run angular:server:production",
-    "prerender": "ng run angular:prerender"
+    "prerender": "ng run angular:prerender",
+    "start:heroku": "node dist/server",
+    "postinstall": "npm run build:ssr"
   },
   "private": true,
   "dependencies": {
@@ -29,7 +29,9 @@
     "@nguniversal/express-engine": "^10.0.1",
     "@nguniversal/module-map-ngfactory-loader": "^7.1.1",
     "angularx-social-login": "^3.2.0",
+    "body-parser": "^1.19.0",
     "express": "^4.15.2",
+    "mongoose": "^5.9.27",
     "ng-zorro-antd": "^9.3.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

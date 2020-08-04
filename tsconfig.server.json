@@ -2,6 +2,7 @@
 {
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "outDir": "./out-tsc/server",
     "target": "es2016",
     "types": [
