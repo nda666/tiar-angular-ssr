@@ -150,12 +150,20 @@
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
             "browserTarget": "angular:build",
-            "serverTarget": "angular:server"
+            "serverTarget": "angular:server",
+            "buildOptimizer": true,
+            "aot": true,
+            "vendorChunk": true,
+            "sourceMap": false
           },
           "configurations": {
             "production": {
               "browserTarget": "angular:build:production",
-              "serverTarget": "angular:server:production"
+              "serverTarget": "angular:server:production",
+              "buildOptimizer": true,
+              "aot": true,
+              "vendorChunk": true,
+              "sourceMap": false
             }
           }
         },

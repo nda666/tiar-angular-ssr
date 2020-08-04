@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "dev:ssr": "ng run angular:serve-ssr",
     "serve:ssr": "node dist/angular/server/main.js",
-    "build:ssr": "ng build --prod && ng run angular:server:production",
+    "build:ssr": "ng build --prod --build-optimizer --aot --source-map=false --vendor-chunk=true && ng run angular:server:production",
     "prerender": "ng run angular:prerender",
     "start:heroku": "node dist/angular/server/main.js",
     "postinstall": "npm run build:ssr"
