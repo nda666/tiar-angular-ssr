@@ -13,7 +13,7 @@
     "build:ssr": "ng build --prod --build-optimizer --aot --source-map=false --vendor-chunk=true && ng run angular:server:production",
     "prerender": "ng run angular:prerender",
     "start:heroku": "node dist/angular/server/main.js",
-    "postinstall": "npm run build:ssr"
+    "heroku-postbuild": "npm run build:ssr"
   },
   "private": true,
   "dependencies": {
