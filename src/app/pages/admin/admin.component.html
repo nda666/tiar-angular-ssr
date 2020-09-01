@@ -43,6 +43,13 @@
                  [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
               ></i>
           </span>
+
+          <span class="header-trigger" (click)="toggleFullscreen()">
+            <i 
+               nz-icon
+               [nzType]="isFullscreen ? 'fullscreen-exit' : 'fullscreen'"
+            ></i>
+        </span>
       </div>
     </nz-header>
     <nz-content>

@@ -13,7 +13,9 @@
     "build:ssr": "ng build --prod --build-optimizer --aot --source-map=false --vendor-chunk=true && ng run angular:server:production",
     "prerender": "ng run angular:prerender",
     "start:heroku": "node dist/angular/server/main.js",
-    "heroku-postbuild": "npm run build:ssr"
+    "heroku-postbuild": "npm run build:ssr",
+    "build:functions": "npm run --prefix functions build",
+    "build:all": "npm run build:ssr && npm run build:functions"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +30,7 @@
     "@angular/router": "~10.0.3",
     "@nguniversal/express-engine": "^10.0.1",
     "@nguniversal/module-map-ngfactory-loader": "^7.1.1",
+    "angular-screenfull": "^1.0.0",
     "angularx-social-login": "^3.2.0",
     "body-parser": "^1.19.0",
     "express": "^4.15.2",

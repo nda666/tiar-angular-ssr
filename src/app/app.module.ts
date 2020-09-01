@@ -15,6 +15,7 @@ import { id_ID } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import id from '@angular/common/locales/id';
 
+
 registerLocaleData(id);
 
 @NgModule({
@@ -22,6 +23,7 @@ registerLocaleData(id);
     AppComponent
   ],
   imports: [
+    
     BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
